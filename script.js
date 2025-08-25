@@ -23,37 +23,22 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    const [mlResults /* futuras integrações: Shopee, OLX etc */] = await Promise.all([
-      fetchML(query),
-    ]);
+    const resp = await fetch(`/api?q=${encodeURIComponent(query)}`);
+    const data = await resp.json();
 
     grid.innerHTML = ""; // limpa skeletons
 
-    const allResults = [...mlResults]; // agrupa marketplaces
-
-    if (!allResults.length) {
+    if (!data.length) {
       grid.innerHTML = "<p>Nenhum produto encontrado 😢</p>";
       return;
     }
 
-    allResults.forEach(item => grid.appendChild(renderCard(item)));
+    data.forEach(item => grid.appendChild(renderCard(item)));
   } catch (err) {
     console.error(err);
     grid.innerHTML = "<p>⚠️ Erro ao buscar produtos</p>";
   }
 });
-
-async function fetchML(query) {
-  const resp = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${encodeURIComponent(query)}&limit=8`);
-  const data = await resp.json();
-  return data.results.map(item => ({
-    title: item.title,
-    price: item.price,
-    thumbnail: item.thumbnail,
-    link: item.permalink,
-    source: "Mercado Livre"
-  }));
-}
 
 function renderCard(item) {
   const card = document.createElement("div");
