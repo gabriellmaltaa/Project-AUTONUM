@@ -28,12 +28,12 @@ form.addEventListener("submit", async (e) => {
 
     grid.innerHTML = ""; // limpa skeletons
 
-    if (!data.length) {
+    if (!data.resultados || data.resultados.length === 0) {
       grid.innerHTML = "<p>Nenhum produto encontrado 😢</p>";
       return;
     }
 
-    data.forEach(item => grid.appendChild(renderCard(item)));
+    data.resultados.forEach(item => grid.appendChild(renderCard(item)));
   } catch (err) {
     console.error(err);
     grid.innerHTML = "<p>⚠️ Erro ao buscar produtos</p>";
@@ -41,16 +41,16 @@ form.addEventListener("submit", async (e) => {
 });
 
 function renderCard(item) {
-  const preco = item.price ? `R$ ${item.price.toFixed(2)}` : "Preço não informado";
+  const preco = item.preco !== undefined ? `R$ ${item.preco.toFixed(2)}` : "Preço não informado";
 
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
-    <img src="${item.thumbnail}" alt="${item.title}">
-    <h3>${item.title}</h3>
+    <img src="${item.thumbnail}" alt="${item.titulo}">
+    <h3>${item.titulo}</h3>
     <div class="price">${preco}</div>
-    <a href="${item.link}" target="_blank" class="btn" data-source="${item.source}">
-      Comprar no ${item.source}
+    <a href="${item.link}" target="_blank" class="btn">
+      Comprar no Mercado Livre
     </a>
   `;
   return card;
