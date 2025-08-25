@@ -76,6 +76,7 @@ form button:hover {
   gap: 1.5rem;
 }
 
+/* Cards */
 .card {
   background: white;
   border-radius: 10px;
@@ -84,6 +85,7 @@ form button:hover {
   display: flex;
   flex-direction: column;
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .card:hover {
@@ -124,6 +126,27 @@ form button:hover {
 
 .card .btn:hover {
   background: #005fa3;
+}
+
+/* Badge de Marketplace */
+.card .badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.badge.ml {
+  background-color: #ffdb15; /* amarelo Mercado Livre */
+  color: #333;
+}
+
+.badge.olx {
+  background-color: #009900; /* verde OLX */
 }
 
 /* Skeletons */
