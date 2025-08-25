@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
 
   grid.innerHTML = "";
 
-  // Mostra skeletons enquanto carrega
+  // Skeletons enquanto carrega
   for (let i = 0; i < 8; i++) {
     const card = document.createElement("div");
     card.className = "card";
@@ -41,7 +41,9 @@ form.addEventListener("submit", async (e) => {
 });
 
 function renderCard(item) {
-  const preco = item.preco !== undefined ? `R$ ${item.preco.toFixed(2)}` : "Preço não informado";
+  const preco = item.preco !== undefined && item.preco !== null
+    ? `R$ ${Number(item.preco).toFixed(2)}`
+    : "Preço não informado";
 
   const card = document.createElement("div");
   card.className = "card";
@@ -50,7 +52,7 @@ function renderCard(item) {
     <h3>${item.titulo}</h3>
     <div class="price">${preco}</div>
     <a href="${item.link}" target="_blank" class="btn">
-      Comprar no Mercado Livre
+      Comprar no ${item.source}
     </a>
   `;
   return card;

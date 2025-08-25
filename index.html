@@ -2,24 +2,29 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Busca de Peças — Multi-Marketplaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca de Produtos</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
-    <h1>Busca de Peças</h1>
+    <h1>Buscar Produtos</h1>
+    <p>Mercado Livre + OLX</p>
+  </header>
+
+  <main>
     <form id="search-form">
-      <input type="text" id="q" placeholder="Buscar por peça... (ex: parachoque)" required>
+      <input type="text" id="q" placeholder="Digite o produto..." required>
       <button type="submit">Buscar</button>
     </form>
-  </header>
-  <main>
-    <section id="results">
-      <h2>Resultados da busca</h2>
-      <div id="grid" class="grid"></div>
-    </section>
+
+    <div id="grid" class="grid"></div>
   </main>
+
+  <footer>
+    <p>Feito com ❤️ | Dados de Mercado Livre e OLX</p>
+  </footer>
+
   <script src="/script.js" defer></script>
 </body>
 </html>
