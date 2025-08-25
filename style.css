@@ -130,22 +130,24 @@ main {
   transition: 0.3s;
 }
 
-/* Disponível = verde */
-.card a {
-  background: #0f0;
+/* Mercado Livre */
+.card a[data-source="Mercado Livre"] {
+  background: #ffe600;
   color: #000;
 }
 
-.card a:hover {
-  background: #0c0;
+.card a[data-source="Mercado Livre"]:hover {
+  background: #e6cc00;
 }
 
-/* Indisponível = vermelho */
-.card a.disabled {
-  background: #f00;
+/* OLX */
+.card a[data-source="OLX"] {
+  background: #6c47ff;
   color: #fff;
-  cursor: not-allowed;
-  pointer-events: none;
+}
+
+.card a[data-source="OLX"]:hover {
+  background: #5333cc;
 }
 
 /* === Skeleton Loading === */

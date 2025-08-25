@@ -41,13 +41,17 @@ form.addEventListener("submit", async (e) => {
 });
 
 function renderCard(item) {
+  const preco = item.price ? `R$ ${item.price.toFixed(2)}` : "Preço não informado";
+
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
     <img src="${item.thumbnail}" alt="${item.title}">
     <h3>${item.title}</h3>
-    <div class="price">R$ ${item.price.toFixed(2)}</div>
-    <a href="${item.link}" target="_blank" class="btn">Comprar no ${item.source}</a>
+    <div class="price">${preco}</div>
+    <a href="${item.link}" target="_blank" class="btn" data-source="${item.source}">
+      Comprar no ${item.source}
+    </a>
   `;
   return card;
 }

@@ -20,21 +20,24 @@ export default async function handler(req, res) {
       source: "Mercado Livre"
     }));
 
-    // ----- OLX (API pública não existe -> scraping simplificado) -----
-    const olxResp = await fetch(`https://www.olx.com.br/api/v1/items?searchTerm=${encodeURIComponent(q)}&size=8`);
+    // ----- OLX (simples) -----
     let olxResults = [];
-
-    if (olxResp.ok) {
-      const olxData = await olxResp.json();
-      if (olxData && olxData.data) {
-        olxResults = olxData.data.map(item => ({
-          title: item.title,
-          price: item.price?.value || 0,
-          thumbnail: item.images?.[0]?.url || "",
-          link: `https://www.olx.com.br/item/${item.id}`,
-          source: "OLX"
-        }));
+    try {
+      const olxResp = await fetch(`https://www.olx.com.br/api/v1/items?searchTerm=${encodeURIComponent(q)}&size=8`);
+      if (olxResp.ok) {
+        const olxData = await olxResp.json();
+        if (olxData && olxData.data) {
+          olxResults = olxData.data.map(item => ({
+            title: item.title,
+            price: item.price?.value || null,
+            thumbnail: item.images?.[0]?.url || "",
+            link: `https://www.olx.com.br/item/${item.id}`,
+            source: "OLX"
+          }));
+        }
       }
+    } catch (err) {
+      console.warn("Erro ao buscar OLX:", err.message);
     }
 
     // juntar todos os marketplaces
