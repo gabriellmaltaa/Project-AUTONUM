@@ -1,0 +1,176 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Header === */
+header {
+  padding: 2rem 1rem;
+  background: #000;
+  text-align: center;
+  border-bottom: 2px solid #222;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* === Form de busca === */
+form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+form input {
+  width: 320px;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #0f0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #000;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #0c0;
+}
+
+/* === Área principal === */
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.results h2, #results h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #ddd;
+}
+
+/* === Grid de produtos === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === Card === */
+.card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: #eee;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #0f0;
+}
+
+/* === Botão de compra === */
+.card a {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Disponível = verde */
+.card a {
+  background: #0f0;
+  color: #000;
+}
+
+.card a:hover {
+  background: #0c0;
+}
+
+/* Indisponível = vermelho */
+.card a.disabled {
+  background: #f00;
+  color: #fff;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* === Skeleton Loading === */
+.skeleton {
+  background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 180px;
+}
+
+.skeleton-text {
+  height: 20px;
+  margin: 10px 0;
+}
