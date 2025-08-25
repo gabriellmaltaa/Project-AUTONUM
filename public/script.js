@@ -48,11 +48,12 @@ function renderCard(item) {
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
+    <span class="badge ${item.source === 'Mercado Livre' ? 'ml' : 'olx'}">${item.source}</span>
     <img src="${item.thumbnail}" alt="${item.titulo}">
     <h3>${item.titulo}</h3>
     <div class="price">${preco}</div>
     <a href="${item.link}" target="_blank" class="btn">
-      Comprar no ${item.source}
+      Comprar
     </a>
   `;
   return card;
